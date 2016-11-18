@@ -178,8 +178,12 @@ typescript.description = description;
  * @returns {string} Dot proto value
  */
 function typeName(protoType) {
-    if (["int64", "int32", "float", "float", "uint32", "uint64"].indexOf(protoType) >= 0) {
+    if (["int32", "float", "float", "uint32"].indexOf(protoType) >= 0) {
       return "number";
+    }
+
+    if (["int64", "uint64"].indexOf(protoType) >= 0) {
+      return "Long";
     }
 
     if (protoType == "bool") {
